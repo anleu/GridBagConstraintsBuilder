@@ -1,6 +1,7 @@
 package com.ztz.gridbagconstraintsbuilder;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,9 @@ public class GridBagContraintsBuilderTest {
 		TestFrame frame = new TestFrame();
 		frame.init();
 		frame.pack();
+		Dimension preferredSize = frame.getPreferredSize();
+		frame.setMinimumSize(preferredSize);
+		frame.setSize(new Dimension((int) (preferredSize.width * 1.5), (int) (preferredSize.getHeight() * 1.8)));
 		frame.setVisible(true);
 	}
 
@@ -30,8 +34,11 @@ public class GridBagContraintsBuilderTest {
 		private final JLabel thirdRowFirstCol   = new JLabel("Third row - first col");
 		private final JLabel thirdRowSecondCol  = new JLabel("Third row - second col - row remainder - grow horizontal");
 		private final JLabel fourthRowFirstCol  = new JLabel("Fourth row - first col");
-		private final JLabel fourthRowSecondCol = new JLabel("Fourth row - second col");
-		private final JLabel fourthRowThirdCol  = new JLabel("Fourth row - third col");
+		private final JLabel fourthRowSecondCol = new JLabel("Fourth row - second col - south");
+		private final JLabel fourthRowThirdCol  = new JLabel("Fourth row - third col - grow both directions");
+		private final JLabel fifthRowFirstCol  = new JLabel("Fifth row - first col");
+		private final JLabel fifthRowSecondCol = new JLabel("Fifth row - second col");
+		private final JLabel fifthRowThirdCol  = new JLabel("Fifth row - third col - east");
 
 		private void init() {
 			setTitle("GridBagBuilder Example");
@@ -40,19 +47,23 @@ public class GridBagContraintsBuilderTest {
 
 			GridBagContraintsBuilder gbb = new GridBagContraintsBuilder();
 
-			mainPanel.add(firstRowFirstCol, gbb.x(0).y(0).unifiedInsets(5).build());
-			mainPanel.add(firstRowSecondCol, gbb.x(1).y(0).unifiedInsets(5).rowRemainder().build());
+			mainPanel.add(firstRowFirstCol, gbb.x(0).y(0).insets(5).build());
+			mainPanel.add(firstRowSecondCol, gbb.x(1).y(0).insets(5).rowRemainder().build());
 
-			mainPanel.add(secondRowFirstCol, gbb.x(0).y(1).unifiedInsets(5).build());
-			mainPanel.add(secondRowSecondCol, gbb.x(1).y(1).unifiedInsets(5).build());
-			mainPanel.add(secondRowThirdCol, gbb.x(2).y(1).unifiedInsets(5).build());
+			mainPanel.add(secondRowFirstCol, gbb.x(0).y(1).insets(5).build());
+			mainPanel.add(secondRowSecondCol, gbb.x(1).y(1).insets(5).build());
+			mainPanel.add(secondRowThirdCol, gbb.x(2).y(1).insets(5).build());
 
-			mainPanel.add(thirdRowFirstCol, gbb.x(0).y(2).unifiedInsets(5).build());
-			mainPanel.add(thirdRowSecondCol, gbb.x(1).y(2).unifiedInsets(5).growHorizontal().rowRemainder().build());
+			mainPanel.add(thirdRowFirstCol, gbb.x(0).y(2).insets(5).build());
+			mainPanel.add(thirdRowSecondCol, gbb.x(1).y(2).insets(5).growHorizontal().rowRemainder().build());
 
-			mainPanel.add(fourthRowFirstCol, gbb.x(0).y(3).unifiedInsets(5).build());
-			mainPanel.add(fourthRowSecondCol, gbb.x(1).y(3).unifiedInsets(5).build());
-			mainPanel.add(fourthRowThirdCol, gbb.x(2).y(3).unifiedInsets(5).growBoth().build());
+			mainPanel.add(fourthRowFirstCol, gbb.x(0).y(3).insets(5).build());
+			mainPanel.add(fourthRowSecondCol, gbb.x(1).y(3).insets(5).south().build());
+			mainPanel.add(fourthRowThirdCol, gbb.x(2).y(3).insets(5).growBoth().build());
+
+			mainPanel.add(fifthRowFirstCol, gbb.x(0).y(4).insets(5).build());
+			mainPanel.add(fifthRowSecondCol, gbb.x(1).y(4).insets(5).build());
+			mainPanel.add(fifthRowThirdCol, gbb.x(2).y(4).insets(5).east().build());
 
 			setBackgroundColors();
 		}

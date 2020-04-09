@@ -80,7 +80,10 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
-	public GridBagContraintsBuilder unifiedInsets(int inset) {
+	/**
+	 * Add the same inset at top, left, bottom and right
+	 */
+	public GridBagContraintsBuilder insets(int inset) {
 		this.insets = new Insets(inset, inset, inset, inset);
 		return this;
 	}
@@ -114,7 +117,50 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
+	public GridBagContraintsBuilder east() {
+		this.anchor = GridBagConstraints.EAST;
+		return this;
+	}
 
+	public GridBagContraintsBuilder north() {
+		this.anchor = GridBagConstraints.NORTH;
+		return this;
+	}
+
+	public GridBagContraintsBuilder northEast() {
+		this.anchor = GridBagConstraints.NORTHEAST;
+		return this;
+	}
+
+	public GridBagContraintsBuilder northWest() {
+		this.anchor = GridBagConstraints.NORTHWEST;
+		return this;
+	}
+
+	public GridBagContraintsBuilder center() {
+		this.anchor = GridBagConstraints.CENTER;
+		return this;
+	}
+
+	public GridBagContraintsBuilder south() {
+		this.anchor = GridBagConstraints.SOUTH;
+		return this;
+	}
+
+	public GridBagContraintsBuilder southEast() {
+		this.anchor = GridBagConstraints.SOUTHEAST;
+		return this;
+	}
+
+	public GridBagContraintsBuilder southWest() {
+		this.anchor = GridBagConstraints.SOUTHWEST;
+		return this;
+	}
+
+	public GridBagContraintsBuilder lastLineStart() {
+		this.anchor = GridBagConstraints.LAST_LINE_START;
+		return this;
+	}
 
 	public GridBagConstraints build() {
 		GridBagConstraints gridBagConstraints = new GridBagConstraints(xPos, yPos, width, height, weightX, weightY, anchor, fill, insets, paddingX, paddingY);
