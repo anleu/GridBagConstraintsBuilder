@@ -9,8 +9,8 @@ public class GridBagContraintsBuilder {
 	private int    yPos;
 	private int    width;
 	private int    height;
-	private int    weightX;
-	private int    weightY;
+	private double weightX;
+	private double weightY;
 	private int    anchor;
 	private int    fill;
 	private Insets insets;
@@ -55,12 +55,12 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
-	public GridBagContraintsBuilder weightX(int weightX) {
+	public GridBagContraintsBuilder weightX(double weightX) {
 		this.weightX = weightX;
 		return this;
 	}
 
-	public GridBagContraintsBuilder weightY(int weightY) {
+	public GridBagContraintsBuilder weightY(double weightY) {
 		this.weightY = weightY;
 		return this;
 	}
@@ -114,6 +114,11 @@ public class GridBagContraintsBuilder {
 
 	public GridBagContraintsBuilder colRemainder() {
 		this.height = GridBagConstraints.REMAINDER;
+		return this;
+	}
+
+	public GridBagContraintsBuilder west() {
+		this.anchor = GridBagConstraints.WEST;
 		return this;
 	}
 
