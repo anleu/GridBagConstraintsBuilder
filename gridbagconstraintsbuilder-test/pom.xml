@@ -13,5 +13,10 @@
 		<testSourceDirectory>test</testSourceDirectory>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>com.ztz</groupId>
+			<artifactId>gridbagconstraintsbuilder</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

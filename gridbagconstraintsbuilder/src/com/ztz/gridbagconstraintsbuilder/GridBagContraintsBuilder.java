@@ -80,6 +80,11 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
+	public GridBagContraintsBuilder insets(int top, int left, int bottom, int right) {
+		this.insets = new Insets(top, left, bottom, right);
+		return this;
+	}
+
 	/**
 	 * Add the same inset at top, left, bottom and right
 	 */
@@ -162,12 +167,47 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
+	public GridBagContraintsBuilder lineStart() {
+		this.anchor = GridBagConstraints.LINE_START;
+		return this;
+	}
+
+	public GridBagContraintsBuilder lineEnd() {
+		this.anchor = GridBagConstraints.LINE_END;
+		return this;
+	}
+
+	public GridBagContraintsBuilder firstLineStart() {
+		this.anchor = GridBagConstraints.FIRST_LINE_START;
+		return this;
+	}
+
+	public GridBagContraintsBuilder firstLineEnd() {
+		this.anchor = GridBagConstraints.FIRST_LINE_END;
+		return this;
+	}
+
 	public GridBagContraintsBuilder lastLineStart() {
 		this.anchor = GridBagConstraints.LAST_LINE_START;
 		return this;
 	}
 
-	public GridBagConstraints build() {
+	public GridBagContraintsBuilder lastLineEnd() {
+		this.anchor = GridBagConstraints.LAST_LINE_END;
+		return this;
+	}
+
+	public GridBagContraintsBuilder pageStart() {
+		this.anchor = GridBagConstraints.PAGE_START;
+		return this;
+	}
+
+	public GridBagContraintsBuilder pageEnd() {
+		this.anchor = GridBagConstraints.PAGE_END;
+		return this;
+	}
+
+	public GridBagConstraints buildAndReset() {
 		GridBagConstraints gridBagConstraints = new GridBagConstraints(xPos, yPos, width, height, weightX, weightY, anchor, fill, insets, paddingX, paddingY);
 		resetToDefault();
 		return gridBagConstraints;
