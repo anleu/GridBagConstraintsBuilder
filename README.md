@@ -1,7 +1,24 @@
 # GridBagConstraintsBuilder
 A Builder for Swing GridBagConstraints to ease the creation of Gridbag-Layouts. 
 Instead of having a long parameter list of the GridBagConstraints constructor the builder
-provides named methods. 
+provides named methods.
+
+Construct the builder with default values
+```Java
+	xPos = 0;
+	yPos = 0;
+	width = 1;
+	height = 1;
+	weightX = 0;
+	weightY = 0;
+	anchor = GridBagConstraints.WEST;
+	fill = GridBagConstraints.NONE;
+	insets = new Insets(0, 0, 0, 0);
+	paddingX = 0;
+	paddingY = 0;
+```
+
+or use constructor with ```Java GridBagContraintsBuilder(GridBagConstraints initialConfiguration) ``` to set own default values for reset.
 
 There are two approches to place the compontents on the grid:
 

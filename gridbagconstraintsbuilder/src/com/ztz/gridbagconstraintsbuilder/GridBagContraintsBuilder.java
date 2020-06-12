@@ -1,9 +1,13 @@
 package com.ztz.gridbagconstraintsbuilder;
 
+import static java.awt.GridBagConstraints.*;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 public class GridBagContraintsBuilder {
+
+	private final GridBagConstraints initialConfiguration;
 
 	private int    xPos;
 	private int    yPos;
@@ -18,21 +22,26 @@ public class GridBagContraintsBuilder {
 	private int    paddingY;
 
 	public GridBagContraintsBuilder() {
+		this(new GridBagConstraints(0, 0, 1, 1, 0, 0, WEST, NONE, new Insets(0, 0, 0, 0), 0, 0));
+	}
+
+	public GridBagContraintsBuilder(GridBagConstraints initialConfiguration) {
+		this.initialConfiguration = initialConfiguration;
 		resetToDefault();
 	}
 
 	private void resetToDefault() {
-		xPos = 0;
-		yPos = 0;
-		width = 1;
-		height = 1;
-		weightX = 0;
-		weightY = 0;
-		anchor = GridBagConstraints.WEST;
-		fill = GridBagConstraints.NONE;
-		insets = new Insets(0, 0, 0, 0);
-		paddingX = 0;
-		paddingY = 0;
+		xPos = initialConfiguration.gridx;
+		yPos = initialConfiguration.gridy;
+		width = initialConfiguration.gridwidth;
+		height = initialConfiguration.gridheight;
+		weightX = initialConfiguration.weightx;
+		weightY = initialConfiguration.weighty;
+		anchor = initialConfiguration.anchor;
+		fill = initialConfiguration.fill;
+		insets = initialConfiguration.insets;
+		paddingX = initialConfiguration.ipadx;
+		paddingY = initialConfiguration.ipady;
 	}
 
 	public GridBagContraintsBuilder x(int xPos) {
@@ -94,12 +103,12 @@ public class GridBagContraintsBuilder {
 	}
 
 	public GridBagContraintsBuilder fillHorizontal() {
-		this.fill = GridBagConstraints.HORIZONTAL;
+		this.fill = HORIZONTAL;
 		return this;
 	}
 
 	public GridBagContraintsBuilder fillVertical() {
-		this.fill = GridBagConstraints.VERTICAL;
+		this.fill = VERTICAL;
 		return this;
 	}
 
@@ -108,7 +117,7 @@ public class GridBagContraintsBuilder {
 	 */
 	public GridBagContraintsBuilder expandHorizontal() {
 		this.weightX = 1;
-		this.fill = GridBagConstraints.HORIZONTAL;
+		this.fill = HORIZONTAL;
 		return this;
 	}
 
@@ -117,7 +126,7 @@ public class GridBagContraintsBuilder {
 	 */
 	public GridBagContraintsBuilder expandVertical() {
 		this.weightY = 1;
-		this.fill = GridBagConstraints.VERTICAL;
+		this.fill = VERTICAL;
 		return this;
 	}
 
@@ -127,108 +136,107 @@ public class GridBagContraintsBuilder {
 	public GridBagContraintsBuilder expandBoth() {
 		this.weightX = 1;
 		this.weightY = 1;
-		this.fill = GridBagConstraints.BOTH;
+		this.fill = BOTH;
 		return this;
 	}
 
 	public GridBagContraintsBuilder rowRemainder() {
-		this.width = GridBagConstraints.REMAINDER;
+		this.width = REMAINDER;
 		return this;
 	}
 
 	public GridBagContraintsBuilder colRemainder() {
-		this.height = GridBagConstraints.REMAINDER;
+		this.height = REMAINDER;
 		return this;
 	}
 
 	public GridBagContraintsBuilder west() {
-		this.anchor = GridBagConstraints.WEST;
+		this.anchor = WEST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder east() {
-		this.anchor = GridBagConstraints.EAST;
+		this.anchor = EAST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder north() {
-		this.anchor = GridBagConstraints.NORTH;
+		this.anchor = NORTH;
 		return this;
 	}
 
 	public GridBagContraintsBuilder northEast() {
-		this.anchor = GridBagConstraints.NORTHEAST;
+		this.anchor = NORTHEAST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder northWest() {
-		this.anchor = GridBagConstraints.NORTHWEST;
+		this.anchor = NORTHWEST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder center() {
-		this.anchor = GridBagConstraints.CENTER;
+		this.anchor = CENTER;
 		return this;
 	}
 
 	public GridBagContraintsBuilder south() {
-		this.anchor = GridBagConstraints.SOUTH;
+		this.anchor = SOUTH;
 		return this;
 	}
 
 	public GridBagContraintsBuilder southEast() {
-		this.anchor = GridBagConstraints.SOUTHEAST;
+		this.anchor = SOUTHEAST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder southWest() {
-		this.anchor = GridBagConstraints.SOUTHWEST;
+		this.anchor = SOUTHWEST;
 		return this;
 	}
 
 	public GridBagContraintsBuilder lineStart() {
-		this.anchor = GridBagConstraints.LINE_START;
+		this.anchor = LINE_START;
 		return this;
 	}
 
 	public GridBagContraintsBuilder lineEnd() {
-		this.anchor = GridBagConstraints.LINE_END;
+		this.anchor = LINE_END;
 		return this;
 	}
 
 	public GridBagContraintsBuilder firstLineStart() {
-		this.anchor = GridBagConstraints.FIRST_LINE_START;
+		this.anchor = FIRST_LINE_START;
 		return this;
 	}
 
 	public GridBagContraintsBuilder firstLineEnd() {
-		this.anchor = GridBagConstraints.FIRST_LINE_END;
+		this.anchor = FIRST_LINE_END;
 		return this;
 	}
 
 	public GridBagContraintsBuilder lastLineStart() {
-		this.anchor = GridBagConstraints.LAST_LINE_START;
+		this.anchor = LAST_LINE_START;
 		return this;
 	}
 
 	public GridBagContraintsBuilder lastLineEnd() {
-		this.anchor = GridBagConstraints.LAST_LINE_END;
+		this.anchor = LAST_LINE_END;
 		return this;
 	}
 
 	public GridBagContraintsBuilder pageStart() {
-		this.anchor = GridBagConstraints.PAGE_START;
+		this.anchor = PAGE_START;
 		return this;
 	}
 
 	public GridBagContraintsBuilder pageEnd() {
-		this.anchor = GridBagConstraints.PAGE_END;
+		this.anchor = PAGE_END;
 		return this;
 	}
 
 	/**
-	 * Jump to the next row and consider the current row height
-	 * Set the x position to 0
+	 * Jump to the next row and consider the current row height Set the x position to 0
 	 */
 	public GridBagContraintsBuilder newRow() {
 		this.yPos += height;
@@ -246,6 +254,7 @@ public class GridBagContraintsBuilder {
 
 	/**
 	 * Build the GridBagContraints and keep the current configuration
+	 *
 	 * @return GridBagConstraints with the given configuration
 	 */
 	public GridBagConstraints build() {
@@ -254,6 +263,7 @@ public class GridBagContraintsBuilder {
 
 	/**
 	 * Build the GridBagContraints and reset to the default configuration
+	 *
 	 * @return GridBagConstraints with the given configuration
 	 */
 	public GridBagConstraints buildAndReset() {
