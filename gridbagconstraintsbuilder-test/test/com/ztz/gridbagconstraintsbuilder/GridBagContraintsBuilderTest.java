@@ -55,11 +55,11 @@ public class GridBagContraintsBuilderTest {
 			mainPanel.add(secondRowThirdCol, gbb.x(2).y(1).insets(5).buildAndReset());
 
 			mainPanel.add(thirdRowFirstCol, gbb.x(0).y(2).insets(5).buildAndReset());
-			mainPanel.add(thirdRowSecondCol, gbb.x(1).y(2).insets(5).growHorizontal().rowRemainder().buildAndReset());
+			mainPanel.add(thirdRowSecondCol, gbb.x(1).y(2).insets(5).expandHorizontal().rowRemainder().buildAndReset());
 
 			mainPanel.add(fourthRowFirstCol, gbb.x(0).y(3).insets(5).buildAndReset());
 			mainPanel.add(fourthRowSecondCol, gbb.x(1).y(3).insets(5).south().buildAndReset());
-			mainPanel.add(fourthRowThirdCol, gbb.x(2).y(3).insets(5).growBoth().buildAndReset());
+			mainPanel.add(fourthRowThirdCol, gbb.x(2).y(3).insets(5).expandBoth().buildAndReset());
 
 			mainPanel.add(fifthRowFirstCol, gbb.x(0).y(4).insets(5).buildAndReset());
 			mainPanel.add(fifthRowSecondCol, gbb.x(1).y(4).insets(5).buildAndReset());

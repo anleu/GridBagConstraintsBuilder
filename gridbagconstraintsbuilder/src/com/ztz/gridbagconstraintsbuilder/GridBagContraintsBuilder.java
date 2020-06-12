@@ -93,19 +93,38 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
-	public GridBagContraintsBuilder growHorizontal() {
+	public GridBagContraintsBuilder fillHorizontal() {
+		this.fill = GridBagConstraints.HORIZONTAL;
+		return this;
+	}
+
+	public GridBagContraintsBuilder fillVertical() {
+		this.fill = GridBagConstraints.VERTICAL;
+		return this;
+	}
+
+	/**
+	 * Component expand horizontally on resize
+	 */
+	public GridBagContraintsBuilder expandHorizontal() {
 		this.weightX = 1;
 		this.fill = GridBagConstraints.HORIZONTAL;
 		return this;
 	}
 
-	public GridBagContraintsBuilder growVertical() {
+	/**
+	 * Component expand vertically on resize
+	 */
+	public GridBagContraintsBuilder expandVertical() {
 		this.weightY = 1;
 		this.fill = GridBagConstraints.VERTICAL;
 		return this;
 	}
 
-	public GridBagContraintsBuilder growBoth() {
+	/**
+	 * Component expand in both directions on resize
+	 */
+	public GridBagContraintsBuilder expandBoth() {
 		this.weightX = 1;
 		this.weightY = 1;
 		this.fill = GridBagConstraints.BOTH;
@@ -207,6 +226,36 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
+	/**
+	 * Jump to the next row and consider the current row height
+	 * Set the x position to 0
+	 */
+	public GridBagContraintsBuilder newRow() {
+		this.yPos += height;
+		this.xPos = 0;
+		return this;
+	}
+
+	/**
+	 * Jump to the next col and consider the current column width
+	 */
+	public GridBagContraintsBuilder newCol() {
+		this.xPos += width;
+		return this;
+	}
+
+	/**
+	 * Build the GridBagContraints and keep the current configuration
+	 * @return GridBagConstraints with the given configuration
+	 */
+	public GridBagConstraints build() {
+		return new GridBagConstraints(xPos, yPos, width, height, weightX, weightY, anchor, fill, insets, paddingX, paddingY);
+	}
+
+	/**
+	 * Build the GridBagContraints and reset to the default configuration
+	 * @return GridBagConstraints with the given configuration
+	 */
 	public GridBagConstraints buildAndReset() {
 		GridBagConstraints gridBagConstraints = new GridBagConstraints(xPos, yPos, width, height, weightX, weightY, anchor, fill, insets, paddingX, paddingY);
 		resetToDefault();
