@@ -27,10 +27,10 @@ public class GridBagContraintsBuilder {
 
 	public GridBagContraintsBuilder(GridBagConstraints initialConfiguration) {
 		this.initialConfiguration = initialConfiguration;
-		resetToDefault();
+		resetToInitialConfiguration();
 	}
 
-	private void resetToDefault() {
+	private void resetToInitialConfiguration() {
 		xPos = initialConfiguration.gridx;
 		yPos = initialConfiguration.gridy;
 		width = initialConfiguration.gridwidth;
@@ -85,8 +85,7 @@ public class GridBagContraintsBuilder {
 	}
 
 	public GridBagContraintsBuilder insets(Insets insets) {
-		this.insets = insets;
-		return this;
+		return insets(insets.top, insets.left, insets.bottom, insets.right);
 	}
 
 	public GridBagContraintsBuilder insets(int top, int left, int bottom, int right) {
@@ -102,6 +101,11 @@ public class GridBagContraintsBuilder {
 		return this;
 	}
 
+	public GridBagContraintsBuilder fillNone() {
+		this.fill = NONE;
+		return this;
+	}
+
 	public GridBagContraintsBuilder fillHorizontal() {
 		this.fill = HORIZONTAL;
 		return this;
@@ -109,6 +113,11 @@ public class GridBagContraintsBuilder {
 
 	public GridBagContraintsBuilder fillVertical() {
 		this.fill = VERTICAL;
+		return this;
+	}
+
+	public GridBagContraintsBuilder fillBoth() {
+		this.fill = BOTH;
 		return this;
 	}
 
@@ -262,13 +271,13 @@ public class GridBagContraintsBuilder {
 	}
 
 	/**
-	 * Build the GridBagContraints and reset to the default configuration
+	 * Build the GridBagContraints and reset to the initial configuration
 	 *
 	 * @return GridBagConstraints with the given configuration
 	 */
 	public GridBagConstraints buildAndReset() {
 		GridBagConstraints gridBagConstraints = new GridBagConstraints(xPos, yPos, width, height, weightX, weightY, anchor, fill, insets, paddingX, paddingY);
-		resetToDefault();
+		resetToInitialConfiguration();
 		return gridBagConstraints;
 	}
 }
