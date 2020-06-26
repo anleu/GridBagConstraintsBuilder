@@ -94,7 +94,7 @@ public class GridBagContraintsBuilder {
 	}
 
 	/**
-	 * Add the same inset at top, left, bottom and right
+	 * Set the same inset at top, left, bottom and right
 	 */
 	public GridBagContraintsBuilder insets(int inset) {
 		this.insets = new Insets(inset, inset, inset, inset);
